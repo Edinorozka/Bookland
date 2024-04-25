@@ -1,0 +1,39 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+    <h1 class="title_site" style="text-align: center;"> {{post.title}} </h1>
+    <div style="display:flex">
+        <div class="postblock">
+            <p class="text" style="text-indent: 25px"> {{post.content|linebreaksbr}} </p>
+            {% if post.image and post.image.url != '/img/background.jpg' %}
+                <img src="{{ post.image.url }}" alt="Картинка!" style="margin-block: 20px"/>
+            {% endif %}
+            <p class="text particular-item" style="text-align:right"><a href="{% url 'home' %}">Назад</a></p>
+        </div>
+
+        <div class="comentblock">
+            {% if user.is_authenticated %}
+            <h3 class="text">Добавить комментарий</h3>
+                <form method="POST" >{% csrf_token %}
+                    <div>
+                        {{form.as_p}}
+
+                        <button type="submit" class="save btn btn-default" style="border-radius: 15px"> Отправить комментарий </button>
+                    </div>
+                </form>
+        {% else %}
+            <h3 class="text"> Для добавления своего комментария, пожалуйста, авторизуйтесь! </h3>
+        {% endif %}
+
+            <hr />
+
+        {% for comment in comments %}
+        
+            <h5 class="text" style="font-weight: 700;"> {{comment.author}} </h5>
+            <p class="text"> {{comment.text|linebreaksbr}} </p>
+            <h7 class="date"> {{comment.date}} </h7>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

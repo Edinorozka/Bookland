@@ -1,0 +1,21 @@
+{% extends "app/layout.html" %}
+{% block content %}
+
+    <h2>Регистрация пользователя</h2>
+    <form method="POST" > {% csrf_token %}
+        <div>
+            {{ regform.as_p}}
+            <button type="submit" class="save btn btn-default" style="border-radius: 15px;
+                    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);"> Зарегистрировать </button>
+        </div>
+
+        {% if regform.as_p.errors %}
+                <p class="validation-summary-errors">Пароль не удовлетворяет условия</p>
+        {% endif %}
+
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </form>
+
+{% endblock %}

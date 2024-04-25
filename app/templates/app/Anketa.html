@@ -1,0 +1,87 @@
+{% extends "app/layout.html" %}
+{% block content %}
+{% load static %}
+{% if form != None %}
+    <h1 class="title_site centre">Форма обратной связи</h1>
+    <div class="block_text" style="width: calc(100vw - 40%);">
+        <form method="post" class="text" style="display:flex;">
+            {% csrf_token %}
+            <div style="margin-right: 30%;">
+                <label id="l1" for = "{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+                {{ form.name }}<br><br>
+                <label for = "{{ form.gender.id_for_label }}">{{ form.gender.label }}:</label>
+                {{ form.gender }}
+                <label for = "{{ form.age.id_for_label }}">{{ form.age.label }}:</label>
+                {{ form.age }}<br><br>
+                <label for = "{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+                {{ form.email }}<br><br>
+            </div>
+            <div>
+                <label for = "{{ form.about.id_for_label }}">{{ form.about.label }}:</label>
+                {{ form.about }}
+                <label for = "{{ form.text.id_for_label }}">{{ form.text.label }}:</label><br>
+                {{ form.text }}<br><br>
+                <input id="b1" type="submit" value="Отправить" style="border-radius: 15px"/>
+
+                <script>
+                    document.getElementById("b1").onmouseover = function() {
+                        this.style.backgroundColor = "#969696";
+                        this.style.color = "#f5f5f5";
+                    }
+                    document.getElementById("b1").onmouseout = function() {
+                        this.style.backgroundColor = "#ffffff";
+                        this.style.color = "#000000";
+                    }
+                    document.getElementById("id_name").onmouseover = function() {
+                        this.style.backgroundColor = "#cfcccc";
+                        this.style.color = "#595959";
+                    }
+                    document.getElementById("id_name").onmouseout = function() {
+                        this.style.backgroundColor = "#ffffff";
+                        this.style.color = "#000000";
+                    }
+                    document.getElementById("id_age").onmouseover = function() {
+                        this.style.backgroundColor = "#cfcccc";
+                        this.style.color = "#595959";
+                    }
+                    document.getElementById("id_age").onmouseout = function() {
+                        this.style.backgroundColor = "#ffffff";
+                        this.style.color = "#000000";
+                    }
+                    document.getElementById("id_email").onmouseover = function() {
+                        this.style.backgroundColor = "#cfcccc";
+                        this.style.color = "#595959";
+                    }
+                    document.getElementById("id_email").onmouseout = function() {
+                        this.style.backgroundColor = "#ffffff";
+                        this.style.color = "#000000";
+                    }
+                    document.getElementById("id_text").onmouseover = function() {
+                        this.style.backgroundColor = "#cfcccc";
+                        this.style.color = "#595959";
+                    }
+                    document.getElementById("id_text").onmouseout = function() {
+                        this.style.backgroundColor = "#ffffff";
+                        this.style.color = "#000000";
+                    }
+                </script>
+            </div>
+        </form>
+    </div>
+{% else %}
+    <h1 class="title_site centre">Спасибо что оставили отзыв!</h1>
+    <h2 class="text centre" style="font-size: 40px;">Полученная информация</h2>
+    <div class="block_text" style="width: calc(100vw - 60%);">
+        <ul class="text">
+            <li><span>Имя:</span>{{ data.name }}</li>
+            <li><span>Пол:</span>{{ data.gender }}</li>
+            <li><span>Возраст:</span>{{ data.age }}</li>
+            <li><span>О чём:</span>{{ data.about }}</li>
+            <li><span>текст:</span>{{ data.text }}</li>
+            <li><span>Почта:</span>{{ data.email }}</li>
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}
+
+<script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
