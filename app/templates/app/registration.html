@@ -1,21 +1,27 @@
 {% extends "app/layout.html" %}
 {% block content %}
 
-    <h2>Регистрация пользователя</h2>
-    <form method="POST" > {% csrf_token %}
-        <div>
-            {{ regform.as_p}}
-            <button type="submit" class="save btn btn-default" style="border-radius: 15px;
-                    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);"> Зарегистрировать </button>
-        </div>
+    <div class="reg_block">
+        <h2 class="title_site centre">Регистрация пользователя</h2>
+        <hr />
+        <form method="POST" style="min-height: 260px;">
+            {% csrf_token %}
+            <div>
+                {{form.as_p}}
+                <button type="submit" class="save btn btn-default" style=" float:right; 
+                        box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2); margin-right: 20px"> Зарегистрировать </button>
+            </div>
 
-        {% if regform.as_p.errors %}
-                <p class="validation-summary-errors">Пароль не удовлетворяет условия</p>
-        {% endif %}
+            {% if regform.as_p.errors %}
+                    <p class="validation-summary-errors">Пароль не удовлетворяет условия</p>
+            {% endif %}
 
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    </form>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            
+        </form>
+    </div>
+    
 
 {% endblock %}

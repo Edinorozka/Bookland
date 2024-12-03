@@ -24,11 +24,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="font-size:25px">
-                    <li><a href="{% url 'home' %}">Домашняя</a></li>
+                    <li><a href="{% url 'shop' %}">Магазин</a></li>
+                    <li><a href="{% url 'blog' %}">Блог</a></li>
                     <li><a href="{% url 'about' %}">О нас</a></li>
                     <li><a href="{% url 'contact' %}">Контакты</a></li>
-                    <li><a href="{% url 'shops' %}">Купить книги</a></li>
-                    <li><a href="{% url 'anketa' %}">Отзыв</a></li>
                 </ul>
                 {% include 'app/loginpartial.html' %}
             </div>

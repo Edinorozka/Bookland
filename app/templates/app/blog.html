@@ -2,31 +2,34 @@
 
 {% block content %}
 <h1 class="title_site" style="text-align: center;">Блог сайта</h1>
-{% if user.is_superuser %}
+{% if user.is_staff %}
     <p style="text-align: right; font-size: 20px; margin-top: -50px"><a href="{% url 'newpost'%}" >Добавить</a></p>
 {% endif %}
 <br />
 <div style="display:flex; flex-wrap: wrap;">
+    {% if posts != '0' %}
+        {% for post in posts %}
 
-    {% for post in posts %}
+            <div class="blog_post">
 
-<div class="blog_post">
+                <h2 class="subtitle_text"> {{post.title}} </h2>
 
-    <h2 class="subtitle_text"> {{post.title}} </h2>
+                <h4 class="text" style="text-align:right"> {{post.posted}} </h4>
 
-    <h4 class="text" style="text-align:right"> {{post.posted}} </h4>
+                <p class="text" style="text-indent: 25px"> {{post.description}} </p>
 
-    <p class="text" style="text-indent: 25px"> {{post.description}} </p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Картинка!" width="350" />
+                {% endif %}
 
-    {% if post.image and post.image.url != '/img/background.jpg' %}
-                <img src="{{ post.image.url }}" alt="Картинка!" width="350" />
+                <p style="margin-block: 10px; float:right"><a href="{% url 'blogpost' parametr=post.id %}"> Читать далее </a> </p>
+
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <p>На данный момент на сайте нет ни одного поста</p>
     {% endif %}
-
-    <p class="particular-item"><a href="{% url 'blogpost' parametr=post.id %}"> Читать далее </a> </p>
-
-</div>
-
-{% endfor %}
 
 </div>
 {% endblock %}

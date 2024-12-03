@@ -2,35 +2,36 @@
 
 {% block content %}
 
-<h2>{{ title }}</h2>
 <div class="row text">
-    <div class="col-md-8">
+    <div class="col-md-8, auth_block">
         <section id="loginForm">
             <form action="." method="post" class="form-horizontal">
                 {% csrf_token %}
-                <h4>Вход</h4>
+                <h4 class="title_site centre">Вход</h4>
                 <hr />
-                <div class="form-group">
-                    <label for="id_username" class="col-md-2 control-label">Имя пользователя</label>
-                    <div class="col-md-10">
-                        {{ form.username }}
+                <div style="width: 95%; margin: auto">
+                    <div class="form-group">
+                        <label for="id_username" class="col-md-2 control-label" style="margin-right: 10%">Логин</label>
+                        <div class="col-md-10" style="width: 70%; min-width: 50%">
+                            {{ form.username }}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="id_password" class="col-md-2 control-label">Пароль</label>
-                    <div class="col-md-10">
-                        {{ form.password }}
+                    <div class="form-group">
+                        <label for="id_password" class="col-md-2 control-label" style="margin-right: 10%">Пароль</label>
+                        <div class="col-md-10" style="width: 70%; min-width: 50%">
+                            {{ form.password }}
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                    <div class="form-group">
+                        <div style="float:right; border-radius: 30px; box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2); margin-right: 20px">
+                            <input type="hidden" name="next" value="/" />
+                            <input type="submit" value="Вход" class="btn btn-default" />
+                        </div>
                     </div>
+                    {% if form.errors %}
+                        <p class="validation-summary-errors">Неверный логи или пароль</p>
+                    {% endif %}
                 </div>
-                {% if form.errors %}
-                <p class="validation-summary-errors">Неверный логи или пароль</p>
-                {% endif %}
             </form>
         </section>
     </div>

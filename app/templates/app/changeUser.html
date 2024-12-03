@@ -1,0 +1,50 @@
+{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <h1 class="title_site" style="text-align: center;">{{ user.username }}</h1>
+    <form action="." method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class="change_view" style="width: 220px;">
+            <div class="form-group">
+            <label for="id_username" class="control-label" style="margin-right: 10%">Имя пользователя</label>
+                <div style="width: 70%; min-width: 50%">
+                    {{ form.username }}
+                </div>
+            </div>       
+            <div class="form-group">
+            <label for="id_username" class="control-label" style="margin-right: 10%">Почта</label>
+                <div style="width: 70%; min-width: 50%">
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="form-group">
+            <label for="id_username" class="control-label" style="margin-right: 10%">Имя</label>
+                <div style="width: 70%; min-width: 50%">
+                    {{ form.first_name }}
+                </div>
+            </div>       
+            <div class="form-group">
+                <label for="id_password" class="control-label" style="margin-right: 10%">Фамилия</label>
+                <div style="width: 70%; min-width: 50%">
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="id_password" class="control-label" style="margin-right: 10%">Адресс доставки</label>
+                <div style="width: 70%; min-width: 50%">
+                    {{ form.address }}
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="save btn btn-default"> Изменить </button>
+            </div> 
+            <hr/>
+            <p><a href="{% url 'changePassword' %}"> Изменить пароль </a></p>
+            <p><a href="{% url 'deleteUser' %}" style="color:red"> Удалить акаунт </a></p>
+        </div>
+    </form>
+    
+</div>
+{% endblock %}

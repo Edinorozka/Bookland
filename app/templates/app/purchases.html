@@ -1,0 +1,64 @@
+﻿{% extends "app/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div>
+    <h1 class="title_site" style="text-align: center;">Корзина</h1>
+    {% if books != 0 %}
+        <div style="display:flex; flex-wrap: wrap;">
+            {% for card in books %}
+
+            <div class="blog_post">
+
+                <h2 class="subtitle_text"> {{card.title}} </h2>
+
+                <img src="{{ card.image.url }}" alt="Картинка!" width="350" height="450" />
+                <p class="text" style="text-indent: 25px; margin-left:20%">{{card.author}} </p>
+                
+
+                {% for num in number %}
+                    {% if num.books.isbn == card.isbn %}
+                        <div style="display:flex">
+                            <a href="{% url 'downbookView1' parametr=card.isbn %}" role="button" type="submit" class="save btn btn-default">Убрать</a>
+                            <p class="text" style="margin-left:5px; margin-right:5px">{{num.number}}</p>
+                            <a href="{% url 'addBook1' parametr=card.isbn %}" role="button" type="submit" class="save btn btn-default">Добавить</a>
+                            <p class="text" style="text-indent: 25px;">{{card.prise}} рублей </p>
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+
+                <p style="float:right"><a href="{% url 'product' parametr=card.isbn %}"> Открыть </a> </p>
+                <p style="margin-right:10px; float:right"><a href="{% url 'deleteBook' parametr=card.isbn %}"> Удалить из корзины </a> </p>
+
+            </div>
+
+            {% endfor %}
+        </div>
+        
+        {% if message != 0 %}
+            <p>{{message}}</p>
+        {% else %}
+            <a href="{% url 'processOrder' %}" role="button" type="submit" class="save btn btn-default" style="margin-top: 25px">Оформить заказ</a>
+        {% endif %}
+    {% endif %}  
+    
+    <hr/>
+    <h1 class="title_site" style="text-align: center;">Заказы</h1>
+        {% if carts == 0 %}
+            <p class="text"> Вы ещё ничего не покупали</p>
+        {% else %}
+            <div style="display:flex; flex-wrap: wrap;">
+                {% for cart in carts %}
+                    <div class="history_view" style="width:max-content; margin-right:20px">
+                        <p class="text">Заказ номер - {{cart.id}}</p>
+                        <p class="text">Статус заказа - {{cart.status}}</p>
+                        <p class="text">Адресс доставки - {{cart.address}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+    
+
+</div>
+{% endblock %}

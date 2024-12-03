@@ -2,12 +2,40 @@
 {% load static %}
 
 {% block content %}
-    <div>
-        <h1 class="title_site" style="text-align: center;">Купить книги можно здесь!</h1>
-        <div class="frames_zone">
-            <a style="background-image: url({% static 'img/litres.png' %}); border: 1px solid #cfcaca;" class="frames_style" href="https://www.litres.ru/"></a>
-            <a style="background-image: url({% static 'img/stroci.png' %}); border: 1px solid #ff0000;" class="frames_style" href="https://stroki.mts.ru/"></a>
-            <a style="background-image: url({% static 'img/ozon.png' %}); border: 1px solid #005bff;" class="frames_style"href="https://www.ozon.ru/category/knigi-16500/"></a>
+    <h1 class="title_site" style="text-align: center;">Магазин</h1>
+    <form action="." method="get" style="display: flex; width: 300px; margin:auto">
+        <div class="form-group" style="display: flex; padding-top: 5px; margin-right: 10px">
+            <label class="control-label text">Поиск</label>
+              <div>
+                    {{ form.query }}
+              </div>
         </div>
-    </div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Найти">
+        </div>
+        
+    </form>
+    <hr/>
+    <div style="display:flex; flex-wrap: wrap;">
+    {% if cards != '0' %}
+        {% for card in cards %}
+
+            <div class="blog_post">
+
+                <h2 class="subtitle_text"> {{card.title}} </h2>
+
+                <img src="{{ card.image.url }}" alt="Картинка!" width="350" height="450" />
+                <p class="text" style="text-indent: 25px; margin-left:20%">{{card.author}} </p>
+                <p class="text" style="text-indent: 25px; margin-left:60%">{{card.prise}} рублей </p>
+
+                <p style="margin-block: 10px; float:right"><a href="{% url 'product' parametr=card.isbn %}"> Открыть </a> </p>
+
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <p>На данный момент в продаже нет ни одной книги</p>
+    {% endif %}
+
+</div>
 {% endblock %}

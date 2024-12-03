@@ -73,7 +73,7 @@
     border: 1px solid #d0d0d0;
     padding: 0 25px 25px 25px;
     box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);
-    position: relative
+    position: relative;
 }
 
 .particular-item {
@@ -105,4 +105,50 @@
     margin-left: 5%;
     margin-right: 25px;
     position: relative
+}
+
+.auth_block {
+    width: 20%;
+    min-width: 350px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);
+    margin: auto;
+}
+
+.reg_block {
+    width: 50%;
+    padding: 32px;
+    min-height: 300px;
+    min-width: 350px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);
+    margin: auto;
+}
+
+.text_view {
+    width: 100%;
+    margin: auto;
+}
+
+.change_view {
+    padding: 32px;
+    background-color: white;
+    border-radius: 50px;
+    background-size: 200px 200px;
+    margin: auto;
+    border: 1px solid #333;
+    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);
+}
+
+.history_view {
+    padding: 32px;
+    background-color: white;
+    border-radius: 50px;
+    background-size: 200px 200px;
+    border: 1px solid #333;
+    box-shadow: 8px 10px 5px 2px rgba(0, 0, 255, .2);
 }

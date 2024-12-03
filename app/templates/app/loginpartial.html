@@ -2,7 +2,10 @@
 <form id="logoutForm" action="/logout/" method="post" class="navbar-right">
     {% csrf_token %}
     <ul class="nav navbar-nav navbar-right" >
-        <li><span class="navbar-brand" style="font-size:25px;">{{ user.username }}</span></li>
+        <li>
+            <a href="{% url 'purchases'%}" class="navbar-brand" style="font-size:25px;">Заказы</a>
+        </li>
+        <li><a href="{% url 'changeUser' pk=user.id %}" class="navbar-brand" style="font-size:25px;">{{ user.username }}</a></li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()" style="font-size:25px;">Выйти</a></li>
     </ul>
 </form>

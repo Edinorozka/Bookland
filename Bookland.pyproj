@@ -31,6 +31,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="app\admin.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\tests.py" />
@@ -59,11 +62,15 @@
   <ItemGroup>
     <Content Include="app\templates\app\anketa.html" />
     <Content Include="app\templates\app\blogpost.html" />
-    <Content Include="app\templates\app\NewPost.html" />
+    <Content Include="app\templates\app\changeUser.html" />
+    <Content Include="app\templates\app\newPost.html" />
+    <Content Include="app\templates\app\password_change_form.html" />
+    <Content Include="app\templates\app\processOrder.html" />
+    <Content Include="app\templates\app\purchases.html" />
     <Content Include="app\templates\app\registration.html" />
-    <Content Include="app\templates\app\Shops.html" />
+    <Content Include="app\templates\app\shops.html" />
+    <Content Include="app\templates\app\product.html" />
     <Content Include="requirements.txt" />
-    <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.min.css" />
     <Content Include="app\static\app\content\site.css" />
     <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />

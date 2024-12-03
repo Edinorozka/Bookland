@@ -6,10 +6,10 @@
     <div style="display:flex">
         <div class="postblock">
             <p class="text" style="text-indent: 25px"> {{post.content|linebreaksbr}} </p>
-            {% if post.image and post.image.url != '/img/background.jpg' %}
-                <img src="{{ post.image.url }}" alt="Картинка!" style="margin-block: 20px"/>
+            {% if post.image %}
+                <img src="{{ post.image.url }}" alt="Картинка!" style="margin-block: 20px;"/>
             {% endif %}
-            <p class="text particular-item" style="text-align:right"><a href="{% url 'home' %}">Назад</a></p>
+            <p class="text particular-item" style="text-align:right"><a href="{% url 'blog' %}">Назад</a></p>
         </div>
 
         <div class="comentblock">
@@ -19,7 +19,7 @@
                     <div>
                         {{form.as_p}}
 
-                        <button type="submit" class="save btn btn-default" style="border-radius: 15px"> Отправить комментарий </button>
+                        <button type="submit" class="save btn btn-default"> Отправить комментарий </button>
                     </div>
                 </form>
         {% else %}
