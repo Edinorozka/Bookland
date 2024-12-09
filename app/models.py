@@ -126,5 +126,4 @@ class Reviews(models.Model):
 admin.site.register(Blog)
 admin.site.register(Books)
 admin.site.register(Comment)
-admin.site.register(Purchases)
 admin.site.register(Reviews)

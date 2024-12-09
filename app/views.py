@@ -402,6 +402,9 @@ def processOrderView(request):
     assert isinstance(request, HttpRequest)
     cart = Purchases.objects.get(models.Q(user=request.user.id) & models.Q(status='cart'))
     books = cart.books.through.objects.filter(purchases = cart)
+    sum = 0
+    for book in books:
+        sum = sum + Books.objects.get(isbn=book.books_id).prise * book.number
     if request.method == 'POST':
         form = ProcessOrderForm(request.POST)
         if form.is_valid():
@@ -428,6 +431,7 @@ def processOrderView(request):
         {
             'form':form,
             'data':cart,
-            'books': books
+            'books': books,
+            'prise': sum,
         }
     )
